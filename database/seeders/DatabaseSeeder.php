@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Employee;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -15,9 +16,27 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        // User::factory()->create([
+        //     'name' => 'Test User',
+        //     'email' => 'test@example.com',
+        // ]);
+
+        $ceo = Employee::factory()->ceo()->create([
+            'full_name' => 'CEO Example',
+            'email' => 'ceo@example.com',
         ]);
+
+        $hr = Employee::factory()->hr()->create([
+            'full_name' => 'HR User',
+            'email' => 'hr@example.com',
+        ]);
+
+        $manager = Employee::factory()->manager()->create([
+            'full_name' => 'Manger One',
+            'email' => 'manager@example.com',
+        ]);
+
+
+        Employee::factory(10)->create(['manager_id' => $manager->id]);
     }
 }
