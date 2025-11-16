@@ -17,7 +17,7 @@ class EmployeeController extends Controller
         $query = Employee::query();
 
         $query = $this->filterManager->apply($query, $request);
-        
+
         $perPage = (int) $request->get('per_page', 10);
 
         $data = $query->with('manager')->paginate($perPage);

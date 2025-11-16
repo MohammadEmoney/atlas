@@ -10,7 +10,7 @@ class EmployeeFilterManager
 {
     private array $filters = [];
 
-    public function __construct(EmployeeFilterManager ...$filters) {
+    public function __construct(EmployeeFilterInterface ...$filters) {
         $this->filters = $filters;
     }
 
