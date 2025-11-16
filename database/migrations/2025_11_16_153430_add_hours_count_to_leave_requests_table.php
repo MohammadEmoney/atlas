@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('leave_requests', function (Blueprint $table) {
-            $table->integer('hours_count')->default(0)->after('days_count');
+            $table->integer('hours_count')->nullable()->after('days_count');
         });
     }
 

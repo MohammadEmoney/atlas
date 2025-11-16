@@ -152,6 +152,7 @@ class LeaveRequestController extends Controller
     public function store(StoreLeaveRequest $request)
     {
         $payload = $request->validated();
+        // dd('test');
         $leaveRequest =  $this->service->create($payload, $payload['employee_id']);
 
         return (new LeaveRequestResource($leaveRequest))->response()->setStatusCode(201);

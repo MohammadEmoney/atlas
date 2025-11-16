@@ -59,14 +59,14 @@ class LeaveRequestService
             $request = LeaveRequest::create(array_merge($payload, [
                 'days_count' => $days,
                 'hours_count' => $hours,
-                'status' => LeaveStatus::Draft->value,
+                'status' => $status,
                 'rejection_reason' => $rejectionReason
             ]));
 
             LeaveLog::create([
                 'leave_request_id' => $request->id,
                 'action' => 'created',
-                'preformed_by' => $actorId,
+                'performed_by' => $actorId,
                 'meta' => ['days_count' => $days, 'hours_count' => $hours, 'errors' => $validatonResult['errors']]
             ]);
 
