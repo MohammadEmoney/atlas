@@ -29,6 +29,7 @@ class LeaveRequest extends Model
         'stage_id',
         'rejection_reason',
         'days_count',
+        'hours_count',
     ];
 
     /**
