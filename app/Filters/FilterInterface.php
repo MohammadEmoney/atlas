@@ -5,7 +5,7 @@ namespace App\Filters;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
-interface EmployeeFilterInterface
+interface FilterInterface
 {
     public function apply(Builder $query, Request $request): Builder;
     public function shouldApply(Request $request): bool;

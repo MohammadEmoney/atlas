@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Employee;
+use App\Models\Stage;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -38,5 +39,13 @@ class DatabaseSeeder extends Seeder
 
 
         Employee::factory(10)->create(['manager_id' => $manager->id]);
+
+        //Stage Seeder
+        $hrStage = Stage::create(['name' => 'HR Review', 'role' => 'hr', 'order' => 1, 'min_days' => 0]);
+        $managerStage = Stage::create(['name' => 'Manager Review', 'role' => 'manager', 'order' => 2, 'min_days' => 0]);
+        $ceoStage = Stage::create(['name' => 'CEO Approval', 'role' => 'ceo', 'order' => 3, 'min_days' => 5]);
+
+        $hrStage->update(['next_stage_id' => $managerStage->id]);
+        $managerStage->update(['next_stage_id' => $ceoStage->id]);
     }
 }

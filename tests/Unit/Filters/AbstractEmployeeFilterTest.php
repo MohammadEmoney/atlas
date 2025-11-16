@@ -1,10 +1,10 @@
 <?php
 
-use App\Filters\AbstractEmployeeFilter;
+use App\Filters\AbstractFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
-class EmployeeFilter extends AbstractEmployeeFilter
+class EmployeeFilter extends AbstractFilter
 {
     private string $filterKey;
 
@@ -24,7 +24,7 @@ class EmployeeFilter extends AbstractEmployeeFilter
     }
 }
 
-test('AbstractEmployeeFilter shouldApply returns true when request has filter key', function () {
+test('AbstractFilter shouldApply returns true when request has filter key', function () {
     $filterKey = 'test_key';
     $filter = new EmployeeFilter($filterKey);
     
@@ -36,7 +36,7 @@ test('AbstractEmployeeFilter shouldApply returns true when request has filter ke
     expect($result)->toBeTrue();
 });
 
-test('AbstractEmployeeFilter shouldApply returns false when request does not have filter key', function () {
+test('AbstractFilter shouldApply returns false when request does not have filter key', function () {
     $filterKey = 'test_key';
     $filter = new EmployeeFilter($filterKey);
     

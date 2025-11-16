@@ -1,11 +1,12 @@
 <?php 
 
-namespace App\Filters;
+namespace App\Filters\Employee;
 
+use App\Filters\AbstractFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
-class PositionFilter extends AbstractEmployeeFilter
+class PositionFilter extends AbstractFilter
 {
     protected function getFilterKey(): string
     {

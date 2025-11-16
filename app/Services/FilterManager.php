@@ -2,19 +2,19 @@
 
 namespace App\Services;
 
-use App\Filters\EmployeeFilterInterface;
+use App\Filters\FilterInterface;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
-class EmployeeFilterManager
+class FilterManager
 {
     private array $filters = [];
 
-    public function __construct(EmployeeFilterInterface ...$filters) {
+    public function __construct(FilterInterface ...$filters) {
         $this->filters = $filters;
     }
 
-    public function addFilters(EmployeeFilterInterface $filter): self
+    public function addFilters(FilterInterface $filter): self
     {
         $this->filters[] = $filter;
         return $this;

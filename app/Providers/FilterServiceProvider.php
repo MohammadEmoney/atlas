@@ -2,10 +2,10 @@
 
 namespace App\Providers;
 
-use App\Filters\ManagerFilter;
-use App\Filters\PositionFilter;
-use App\Filters\SearchFilter;
-use App\Services\EmployeeFilterManager;
+use App\Filters\Employee\ManagerFilter;
+use App\Filters\Employee\PositionFilter;
+use App\Filters\Employee\SearchFilter;
+use App\Services\FilterManager;
 use Illuminate\Support\ServiceProvider;
 
 class FilterServiceProvider extends ServiceProvider
@@ -15,8 +15,16 @@ class FilterServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->bind(EmployeeFilterManager::class, function () {
-            return new EmployeeFilterManager(
+        $this->app->bind('employee_filter_manager', function () {
+            return new FilterManager(
+                new SearchFilter(),
+                new PositionFilter(),
+                new ManagerFilter()
+            );
+        });
+
+        $this->app->bind('leave_request_filter_manager', function () {
+            return new FilterManager(
                 new SearchFilter(),
                 new PositionFilter(),
                 new ManagerFilter()

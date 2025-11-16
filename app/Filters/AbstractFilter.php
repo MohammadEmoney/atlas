@@ -4,7 +4,7 @@ namespace App\Filters;
 
 use Illuminate\Http\Request;
 
-abstract class AbstractEmployeeFilter implements EmployeeFilterInterface
+abstract class AbstractFilter implements FilterInterface
 {
     public function shouldApply(Request $request): bool
     {

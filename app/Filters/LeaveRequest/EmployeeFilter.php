@@ -1,19 +1,20 @@
 <?php 
 
-namespace App\Filters;
+namespace App\Filters\LeaveRequest;
 
+use App\Filters\AbstractFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
-class ManagerFilter extends AbstractEmployeeFilter
+class EmployeeFilter extends AbstractFilter
 {
     protected function getFilterKey(): string
     {
-        return 'manager_id';
+        return 'employee_id';
     }
 
     public function apply(Builder $query, Request $request): Builder
     {
-        return $query->where('manager_id', $request->get('manager_id'));
+        return $query->where('employee_id', $request->get('employee_id'));
     }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\EmployeeResource;
 use App\Models\Employee;
-use App\Services\EmployeeFilterManager;
+use App\Services\FilterManager;
 use Illuminate\Http\Request;
 use OpenApi\Attributes as OA;
 
@@ -100,7 +100,9 @@ use OpenApi\Attributes as OA;
 )]
 class EmployeeController extends Controller
 {
-    public function __construct(private EmployeeFilterManager $filterManager){}
+    public function __construct(private FilterManager $filterManager){
+        $this->filterManager = app('employee_filter_manager');
+    }
 
     /**
      * Get a list of employees with optional filtering
